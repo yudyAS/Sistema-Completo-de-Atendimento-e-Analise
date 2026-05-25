@@ -6,6 +6,18 @@ Construir um software completo de gerenciamento de atendimentos, com cadastro, f
 ## Contexto (dia a dia)
 Sistema para uma clinica ou central de atendimento com fila comum, fila de prioridade e historico de atendimentos.
 
+## Progresso atual
+- ✅ Cadastro de clientes e atendentes
+- ✅ Busca binária por ID usando vetor ordenado
+- ✅ Lista encadeada de clientes ativos
+- ✅ Filas comum e de prioridade
+- ✅ Abertura e chamada de atendimento
+- ✅ Finalização de atendimento com registro
+- ✅ Histórico de atendimentos por cliente
+- ✅ Desfazer última finalização com pilha
+- ✅ Cálculo de tempo médio de atendimento
+- ⚠️ Exportar relatórios em CSV implementado no serviço, interface ainda será integrada
+
 ## Requisitos funcionais (obrigatorios)
 1. Cadastro de clientes (id, nome, telefone, prioridade).
 2. Cadastro de atendentes (id, nome).

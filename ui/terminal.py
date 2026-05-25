@@ -1,3 +1,4 @@
+from services.atendimento import SistemaAtendimento
 from services.registry import SistemaCadastro
 
 
@@ -23,6 +24,7 @@ def solicitar_texto(mensagem: str) -> str:
 def run_menu() -> None:
     """Executa o menu principal do sistema."""
     sistema = SistemaCadastro()
+    atendimento_svc = SistemaAtendimento(sistema)
     while True:
         print("\n=== Sistema de Atendimento ===")
         print("1 - Cadastrar cliente")
@@ -30,6 +32,12 @@ def run_menu() -> None:
         print("3 - Buscar cliente por ID")
         print("4 - Listar clientes ativos")
         print("5 - Remover cliente inativo")
+        print("6 - Abrir atendimento")
+        print("7 - Chamar próximo atendimento")
+        print("8 - Finalizar atendimento")
+        print("9 - Desfazer última finalização")
+        print("10 - Tempo médio de atendimento")
+        print("11 - Histórico de atendimentos por cliente")
         print("0 - Sair")
         opcao = input("Escolha uma opção: ").strip()
 
@@ -81,6 +89,53 @@ def run_menu() -> None:
                     print("Cliente já está inativo ou não foi encontrado.")
             except ValueError as erro:
                 print(f"Erro: {erro}")
+
+        elif opcao == "6":
+            try:
+                cliente_id = solicitar_inteiro("ID do cliente para abrir atendimento: ")
+                atendimento_svc.abrir_atendimento(cliente_id)
+                print("Cliente adicionado à fila de atendimento.")
+            except ValueError as erro:
+                print(f"Erro: {erro}")
+
+        elif opcao == "7":
+            try:
+                atendente_id = solicitar_inteiro("ID do atendente para atender: ")
+                cliente_id = atendimento_svc.chamar_proximo(atendente_id)
+                cliente = sistema.buscar_cliente_por_id(cliente_id)
+                print(f"Próximo atendimento: cliente {cliente_id} - {cliente.nome if cliente else 'desconhecido'}")
+            except ValueError as erro:
+                print(f"Erro: {erro}")
+
+        elif opcao == "8":
+            try:
+                atendente_id = solicitar_inteiro("ID do atendente que finaliza: ")
+                duracao = solicitar_inteiro("Duração do atendimento em minutos: ")
+                atendimento = atendimento_svc.finalizar_atendimento(atendente_id, duracao)
+                print(f"Atendimento finalizado: cliente {atendimento.cliente_id}, atendente {atendimento.atendente_id}, duração {atendimento.duracao_minutos} min")
+            except ValueError as erro:
+                print(f"Erro: {erro}")
+
+        elif opcao == "9":
+            try:
+                atendimento = atendimento_svc.desfazer_ultima_finalizacao()
+                print(f"Finalização desfeita: cliente {atendimento.cliente_id}, atendente {atendimento.atendente_id}")
+            except ValueError as erro:
+                print(f"Erro: {erro}")
+
+        elif opcao == "10":
+            media = atendimento_svc.calcular_tempo_medio()
+            print(f"Tempo médio de atendimento: {media:.2f} minutos")
+
+        elif opcao == "11":
+            cliente_id = solicitar_inteiro("ID do cliente para ver histórico: ")
+            historico = atendimento_svc.listar_historico_cliente(cliente_id)
+            if historico:
+                print(f"Histórico do cliente {cliente_id}:")
+                for item in historico:
+                    print(f"- {item.data}: atendente {item.atendente_id}, {item.duracao_minutos} min")
+            else:
+                print("Nenhum atendimento registrado para esse cliente.")
 
         elif opcao == "0":
             print("Saindo...")

@@ -52,3 +52,12 @@ class ListaEncadeada:
             resultado.append(atual.cliente)
             atual = atual.proximo
         return resultado
+
+    def listar_recursivo(self) -> List[Cliente]:
+        """Retorna todos os clientes usando recursão."""
+        return self._listar_recursivo(self.cabeca)
+
+    def _listar_recursivo(self, node: Optional[Node]) -> List[Cliente]:
+        if node is None:
+            return []
+        return [node.cliente] + self._listar_recursivo(node.proximo)
