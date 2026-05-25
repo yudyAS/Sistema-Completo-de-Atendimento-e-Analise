@@ -1,0 +1,3 @@
+# Dependências do projeto
+# Para executar os testes, instale pytest se desejar.
+pytest
