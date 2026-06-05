@@ -16,7 +16,7 @@ Sistema para uma clinica ou central de atendimento com fila comum, fila de prior
 - ✅ Histórico de atendimentos por cliente
 - ✅ Desfazer última finalização com pilha
 - ✅ Cálculo de tempo médio de atendimento
-- ⚠️ Exportar relatórios em CSV implementado no serviço, interface ainda será integrada
+- ✅ Exportar relatórios em CSV implementado no serviço, interface ainda será integrada
 
 ## Requisitos funcionais (obrigatorios)
 1. Cadastro de clientes (id, nome, telefone, prioridade).
