@@ -38,6 +38,7 @@ def run_menu() -> None:
         print("9 - Desfazer última finalização")
         print("10 - Tempo médio de atendimento")
         print("11 - Histórico de atendimentos por cliente")
+        print("12 - Exportar relatório CSV")
         print("0 - Sair")
         opcao = input("Escolha uma opção: ").strip()
 
@@ -136,6 +137,14 @@ def run_menu() -> None:
                     print(f"- {item.data}: atendente {item.atendente_id}, {item.duracao_minutos} min")
             else:
                 print("Nenhum atendimento registrado para esse cliente.")
+                
+        elif opcao == "12":
+            try:
+                filename = solicitar_texto("Nome do arquivo CSV para exportar: ")
+                atendimento_svc.exportar_relatorio_csv(filename)
+                print(f"Relatório exportado para {filename}")
+            except ValueError as erro:
+                print(f"Erro: {erro}")
 
         elif opcao == "0":
             print("Saindo...")
