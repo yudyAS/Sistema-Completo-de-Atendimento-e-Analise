@@ -1,0 +1,51 @@
+Relatório – Sistema de Atendimento e Gerenciamento de Clientes
+
+Introdução
+Este projeto consiste no desenvolvimento de um sistema de atendimento capaz de realizar o cadastro de clientes e atendentes,
+controlar filas de espera, registrar atendimentos e gerar relatórios. O sistema foi desenvolvido utilizando Python e aplicando 
+conceitos de Estruturas de Dados estudados em sala de aula.
+
+Estruturas de Dados Aplicadas
+
+Lista Encadeada
+Utilizada para armazenar os clientes ativos do sistema, permitindo inserções de forma eficiente.
+Complexidade:
+* Inserção: O(1)
+* Busca: O(n)
+* Remoção: O(n)
+
+Fila
+Utilizada para organizar os clientes que aguardam atendimento, respeitando a ordem de chegada.
+Complexidade:
+* Inserção: O(1)
+* Remoção: O(1)
+
+Fila de Prioridade
+Responsável por garantir que clientes prioritários sejam atendidos antes dos demais, sem perder a ordem de chegada entre clientes da mesma categoria.
+Complexidade:
+* Inserção: O(1)
+* Remoção: O(1)
+
+Pilha
+Utilizada para armazenar o histórico das finalizações de atendimento, permitindo desfazer a última operação realizada.
+Complexidade:
+* Empilhar: O(1)
+* Desempilhar: O(1)
+
+ Vetor Ordenado
+Empregado para armazenar registros organizados por identificador, permitindo a utilização da busca binária.
+Complexidade:
+* Busca Binária: O(log n)
+
+Recursão
+Aplicada na exibição dos clientes armazenados na lista encadeada, percorrendo seus elementos de forma recursiva.
+Complexidade:
+* O(n)
+
+Dados de Exemplo
+As informações do sistema são armazenadas em arquivos JSON. Dessa forma, os dados permanecem disponíveis mesmo após o encerramento da execução do programa.
+
+Os arquivos utilizados incluem:
+* clientes.json
+* atendentes.json
+* atendimentos.json
