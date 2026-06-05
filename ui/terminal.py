@@ -84,7 +84,7 @@ def run_menu() -> None:
         elif opcao == "5":
             try:
                 cliente_id = solicitar_inteiro("ID do cliente para remover: ")
-                if sistema.remover_cliente_inativo(cliente_id):
+                if sistema.remover_cliente_inativo(cliente_id, atendimento_svc):
                     print("Cliente marcado como inativo e removido da lista de ativos.")
                 else:
                     print("Cliente já está inativo ou não foi encontrado.")
@@ -137,7 +137,7 @@ def run_menu() -> None:
                     print(f"- {item.data}: atendente {item.atendente_id}, {item.duracao_minutos} min")
             else:
                 print("Nenhum atendimento registrado para esse cliente.")
-                
+
         elif opcao == "12":
             try:
                 filename = solicitar_texto("Nome do arquivo CSV para exportar: ")

@@ -85,13 +85,24 @@ class SistemaCadastro:
                 direita = meio - 1
         return None
 
-    def remover_cliente_inativo(self, cliente_id: int) -> bool:
+    def remover_cliente_inativo(self, cliente_id: int, sistema_atendimento=None) -> bool:
         """Marca cliente como inativo e remove da lista encadeada de ativos."""
         cliente = self.buscar_cliente_por_id(cliente_id)
         if cliente is None:
             raise ValueError(f"Cliente {cliente_id} não encontrado")
         if not cliente.ativo:
             return False
+        if sistema_atendimento is not None:
+            # Cliente está aguardando na fila
+            if cliente_id in sistema_atendimento.fila.listar_ordem():
+                raise ValueError(
+                    "Não é possível remover cliente com atendimento em aberto ou aguardando na fila."
+                )
+            # Cliente já está sendo atendido
+            if cliente_id in sistema_atendimento.atendimentos_abertos.values():
+                raise ValueError(
+                    "Não é possível remover cliente com atendimento em aberto."
+                )
 
         cliente.ativo = False
         removido = self.clientes_ativos.remover_por_id(cliente_id)

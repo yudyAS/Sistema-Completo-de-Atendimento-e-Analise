@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "cliente_id": 1,
+    "atendente_id": 1,
+    "data": "2026-06-01 09:30",
+    "duracao_minutos": 15
+  },
+  {
+    "cliente_id": 1,
+    "atendente_id": 1,
+    "data": "2026-06-03 14:10",
+    "duracao_minutos": 20
+  }
+]
