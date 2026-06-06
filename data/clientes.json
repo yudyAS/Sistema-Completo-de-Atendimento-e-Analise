@@ -1,9 +1,23 @@
 [
   {
     "id": 1,
-    "nome": "Ana",
-    "telefone": "(11)90000-0000",
+    "nome": "Ana Silva",
+    "telefone": "(11) 98765-4321",
     "prioridade": true,
+    "ativo": true
+  },
+  {
+    "id": 2,
+    "nome": "Bruno Costa",
+    "telefone": "(11) 99876-5432",
+    "prioridade": false,
+    "ativo": true
+  },
+  {
+    "id": 3,
+    "nome": "Carla Souza",
+    "telefone": "(11) 91234-5678",
+    "prioridade": false,
     "ativo": true
   }
 ]

@@ -71,7 +71,12 @@ class SistemaCadastro:
         return atendente
 
     def buscar_cliente_por_id(self, cliente_id: int) -> Optional[Cliente]:
-        """Busca cliente no vetor ordenado usando busca binária."""
+        """
+        Busca cliente no vetor ordenado usando busca binária.
+
+        Complexidade: O(log n) onde n é a quantidade de clientes em
+        `self.clientes_ordenados`.
+        """
         esquerda = 0
         direita = len(self.clientes_ordenados) - 1
         while esquerda <= direita:

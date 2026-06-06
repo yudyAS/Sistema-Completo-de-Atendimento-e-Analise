@@ -39,6 +39,9 @@ def run_menu() -> None:
         print("10 - Tempo médio de atendimento")
         print("11 - Histórico de atendimentos por cliente")
         print("12 - Exportar relatório CSV")
+        print("13 - Filtrar atendimentos por data")
+        print("14 - Top clientes atendidos")
+        print("15 - Verificar alertas de fila")
         print("0 - Sair")
         opcao = input("Escolha uma opção: ").strip()
 
@@ -145,6 +148,32 @@ def run_menu() -> None:
                 print(f"Relatório exportado para {filename}")
             except ValueError as erro:
                 print(f"Erro: {erro}")
+
+        elif opcao == "13":
+            data = solicitar_texto("Data (YYYY-MM-DD): ")
+            resultados = atendimento_svc.listar_atendimentos_por_data(data)
+            if resultados:
+                print(f"Atendimentos em {data}:")
+                for r in resultados:
+                    print(f"- Cliente {r.cliente_id}, Atendente {r.atendente_id}, {r.duracao_minutos} min, {r.data}")
+            else:
+                print("Nenhum atendimento nessa data.")
+
+        elif opcao == "14":
+            top = atendimento_svc.top_clientes_atendidos()
+            if top:
+                print("Top clientes atendidos:")
+                for cid, nome, qtd in top:
+                    print(f"- ID {cid}: {nome} — {qtd} atendimentos")
+            else:
+                print("Nenhum atendimento registrado.")
+
+        elif opcao == "15":
+            alertas = atendimento_svc.verificar_alertas_fila()
+            if alertas:
+                print("Alertas:\n" + "\n".join(alertas))
+            else:
+                print("Nenhum alerta no momento.")
 
         elif opcao == "0":
             print("Saindo...")

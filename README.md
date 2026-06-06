@@ -86,3 +86,52 @@ Sistema para uma clinica ou central de atendimento com fila comum, fila de prior
 - Estabilidade (sem travar em entradas invalidas).
 - Qualidade do codigo e organizacao.
 - Capacidade de explicar as decisoes tecnicas.
+
+## Como executar
+
+Requisitos:
+
+- Python 3.8+ instalado
+- (Opcional) ambiente virtual
+
+Passos rápidos:
+
+1. Criar e ativar um ambiente virtual (opcional, recomendado):
+
+```bash
+python -m venv .venv
+# Windows PowerShell
+.venv\Scripts\Activate.ps1
+# Windows CMD
+.venv\Scripts\activate.bat
+# Unix / macOS
+source .venv/bin/activate
+```
+
+2. Instalar dependências:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Executar a aplicação (terminal):
+
+```bash
+python main.py
+```
+
+4. Rodar os testes unitários (opcional):
+
+```bash
+pytest -q
+```
+
+Observações:
+
+- Os dados são persistidos em `data/` (arquivos JSON). Exemplos já incluídos: `clientes.json`, `atendentes.json`, `atendimentos.json`.
+- Para exportar relatórios, use a opção do menu "Exportar relatório CSV" e forneça um nome de arquivo (ex.: `relatorio.csv`).
+- Se quiser limpar os dados de teste, remova os arquivos dentro da pasta `data/`.
+
+Suporte:
+
+Se tiver problemas ao executar, envie o erro que aparecer no terminal que eu ajudo a debugar.
